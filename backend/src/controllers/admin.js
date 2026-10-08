@@ -1,0 +1,4 @@
+const db=require('../config/db');
+exports.users=async(req,res)=>{const {rows}=await db.query('SELECT id,name,email,role,active,created_at FROM users ORDER BY created_at DESC');res.json({users:rows});};
+exports.toggle=async(req,res)=>{if(+req.params.id===req.user.id)return res.status(400).json({message:'You cannot deactivate yourself'});const {rows}=await db.query('UPDATE users SET active=$1,updated_at=NOW() WHERE id=$2 RETURNING id,name,email,role,active',[req.body.active,req.params.id]);if(!rows[0])return res.status(404).json({message:'User not found'});res.json({user:rows[0]});};
+exports.stats=async(req,res)=>{const {rows}=await db.query(`SELECT (SELECT COUNT(*) FROM users) users,(SELECT COUNT(*) FROM products) products,(SELECT COUNT(*) FROM orders) orders,(SELECT COALESCE(SUM(total_amount),0) FROM orders WHERE payment_status='PAID') revenue`);res.json({stats:rows[0]});};

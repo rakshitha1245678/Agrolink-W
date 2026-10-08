@@ -1,0 +1,1 @@
+const app=require('./src/app');const db=require('./src/config/db');const port=process.env.PORT||5000;app.listen(port,async()=>{console.log(`AgroLink API listening on http://localhost:${port}`);try{await db.query('SELECT 1');console.log('PostgreSQL connected');}catch(e){console.warn('PostgreSQL unavailable:',e.message);}});
