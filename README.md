@@ -33,3 +33,11 @@ Express routes call small controllers, PostgreSQL is accessed through a pool wit
 ## Razorpay
 
 Set `RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET` in `backend/.env` with test credentials. Checkout then creates an actual Razorpay order. A production UI can call Razorpay Checkout and POST its `razorpay_payment_id` plus `razorpay_signature` to the payment endpoint; the server validates the signature before marking paid. The included frontend intentionally defaults to its safe mock workflow for local credential-free testing.
+## Project Structure
+
+- backend/ - Handles API routes, authentication, and business logic.
+- frontend/ - Contains the user interface and client-side functionality.
+- database/ - Contains PostgreSQL database schema and related files.
+
+The project follows a frontend-backend architecture
+with PostgreSQL as its database.
