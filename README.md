@@ -41,3 +41,11 @@ Set `RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET` in `backend/.env` with test cred
 
 The project follows a frontend-backend architecture
 with PostgreSQL as its database.
+## Key Modules
+
+- Authentication: User registration and login.
+- Product Management: Farmers can manage their products.
+- Shopping Cart: Customers can add and manage cart items.
+- Order Management: Customers can place orders and track status.
+- Payment Processing: Supports Razorpay test integration and mock payments.
+- Role Management: Supports Customer, Farmer, and Admin roles.
